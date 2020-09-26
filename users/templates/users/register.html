@@ -5,8 +5,17 @@
 <div class="container">
 
     <h2>Register Here</h2>
-
-    <form action="" method="post">
+    {% include 'alerts.html' %}
+    <form action="{% url 'register' %}" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="firstname">Firstname</label>
+            <input type="text" name="firstname" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label for="lastname">Lastname</label>
+            <input type="text" name="lastname" class="form-control" />
+        </div>
         <div class="form-group">
             <label for="username">Username</label>
             <input type="text" name="username" class="form-control" />
