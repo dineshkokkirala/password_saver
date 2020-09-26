@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages, auth
-from django.contrib.auth import authenticate, login as dj_login
+from django.contrib.auth import authenticate, login as dj_login, logout
 # Create your views here.
 from django.contrib.auth.models import User
 
@@ -55,3 +55,10 @@ def login(request):
 
     else:
         return render(request, 'users/login.html')
+
+
+def logout(request):
+    if request.method == 'POST':
+        auth.logout(request)
+        messages.success(request, 'Successfully Logged out')
+        return redirect('login')
