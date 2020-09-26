@@ -10,7 +10,8 @@
     <div class="row">
         <div class="col-md-6">
             {% include 'alerts.html' %}
-            <form action="" method="post">
+            <form action="{% url 'create' %}" method="post">
+                {% csrf_token %}
                 <div class="form-group">
                     <label for="websitename">Website Name</label>
                     <input type="text" name="websitename" class="form-control" />
@@ -46,7 +47,8 @@
             </form>
         </div>
         <div class="col-md-6">
-            <h5>Stored password</h5>
+            <h2>Stored passwords</h2>
+
         </div>
     </div>
 </div>
