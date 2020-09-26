@@ -1,10 +1,16 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from .models import Passwords
+from django.contrib.auth.models import User
 
 
 def index(request):
-    return render(request, 'home/index.html')
+    passwords = Passwords.objects.filter(user_id=request.user.id)
+    context = {
+        'passwords': passwords
+    }
+    # print(request.user.email)
+    return render(request, 'home/index.html', context)
 
 
 def create(request):
@@ -31,3 +37,21 @@ def create(request):
             return redirect('index')
     else:
         return render(request, 'home/index.html')
+
+
+def hide(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        websitename = request.POST['websitename']
+        websiteurl = request.POST['websiteurl']
+        password = request.POST['password']
+        email = request.POST['email']
+
+        context = {
+            'username': username,
+            'websitename': websitename,
+            'websiteurl': websiteurl,
+            'password': password,
+            'email': email
+        }
+    return render(request, 'home/hide.html', context)
