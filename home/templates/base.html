@@ -6,15 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
         integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-
+    <script src="https://kit.fontawesome.com/d9b8435b49.js" crossorigin="anonymous"></script>
     <title>Password Saver</title>
 </head>
 
 <body>
-    <nav class="navbar navbar-dark  bg-primary mb-4 sticky-top navbar-expand-lg ">
+    <nav class="navbar navbar-dark  bg-info mb-4 sticky-top navbar-expand-lg ">
         <div class="container">
             <a href="{% url 'index' %}">
-                <h1 class="navbar-brand" style="font-size: 35px;">Password Saver</h1>
+                <h1 class="navbar-brand" style="font-size: 35px;"> <i class="fas fa-key"></i> Password Saver</h1>
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
                 aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
@@ -38,7 +38,8 @@
                         {% endif %}>
                         <a class="nav-link" href="{% url 'register' %}">Register</a>
                     </li>
-                    <li class="nav-item">
+                    <li {% if 'login' in request.path %} class="nav-item active" {% else %} class="nav-item"
+                        {% endif %}>
                         <a class="nav-link" href="{% url 'login' %}">Login</a>
                     </li>
                     {% endif %}
