@@ -5,12 +5,53 @@
 
 <div class="container">
     <div class="card p-4 text-center">
-        <h1>Website Name : <span style="color:blueviolet;">{{websitename}}</span></h1>
-        <h3>Website URL : <span style="color: blueviolet;">{{websiteurl}}</span></h3>
-        <h3>Username : <span style="color: blueviolet;">{{username}}</span></h3>
-        <h3>Email : <span style="color: blueviolet;">{{email}}</span></h3>
-        <h3>Password : <span style="color: red;">{{password}}</span></h3>
+        <div class="container">
+
+            <h1>Website Name : <span style="color:blueviolet;">{{websitename}}</span></h1>
+            <h3>Website URL : <span style="color: blueviolet;">{{websiteurl}}</span></h3>
+            <h3>Username : <span style="color: blueviolet;">{{username}}</span></h3>
+            <h3>Email : <span style="color: blueviolet;">{{email}}</span></h3>
+            <div class="row">
+                <div class="col-md-6">
+                    <input type="password" name="password" id="myInput" value="{{password}}" class="form-control" />
+                </div>
+                <div class="col-md-6">
+                    <button class="btn btn-success btn-block" onclick="myfunc()">View</button>
+                </div>
+            </div>
+            <!-- <h3>Password : <span style="color: red;">{{password}}</span></h3> -->
+            <br><br>
+            <div class="row">
+                <div class="col-md-6">
+                    <form action="update/{{id}}/{{websitename}}" method="POST">
+                        {% csrf_token %}
+                        <button class="btn btn-block btn-info">Update</button>
+
+                    </form>
+                </div>
+                <div class="col-md-6">
+                    <form action="{{ id }}" method="post">
+                        {% csrf_token %}
+
+                        <button class="btn btn-block btn-danger" type="submit">Delete</button>
+
+                    </form>
+
+                </div>
+            </div>
+        </div>
     </div>
 </div>
+
+<script>
+    function myfunc() {
+        var x = document.getElementById('myInput');
+        if (x.type === "password") {
+            x.type = "text";
+        } else {
+            x.type = "password";
+        }
+    }
+</script>
 
 {% endblock %}

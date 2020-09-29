@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+
+
+{% block content %}
+
+<div class="container">
+
+    <form action="dinesh" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="websitename">Website Name</label>
+            <input type="text" name="websitename" class="form-control" value="{{websitename}}" />
+        </div>
+        <div class="form-group">
+            <label for="websiteurl">Website URL</label>
+            <input type="text" name="websiteurl" class="form-control" value="{{websiteurl}}">
+        </div>
+        <div class="form-group">
+            <label for="username">Username or Handle</label>
+            <input type="text" name="username1" class="form-control" value="{{username}}">
+        </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="text" name="email" class="form-control" value="{{ email }}">
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" name="password" id="myInput" class="form-control" value="{{password}}">
+        </div>
+        <div class="mb-3">
+            <input type="checkbox" onclick="myfunc()" /> Show Password
+        </div>
+        <!-- <div class="form-group">
+            <label for="password2">Confirm Password</label>
+            <input type="password" name="password2" id="myInput2" class="form-control" value="{{password}}">
+        </div> -->
+
+        <input type="hidden" name="user_id" value="{{user.id}}">
+        <input type="submit" value="Save Password" class="btn btn-block bg-success text-light">
+    </form>
+</div>
+
+<script>
+    function myfunc() {
+        var x = document.getElementById('myInput');
+        if (x.type === "password") {
+            x.type = "text";
+        } else {
+            x.type = "password";
+        }
+    }
+</script>
+
+{% endblock %}

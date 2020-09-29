@@ -24,7 +24,7 @@
                 <ul class="navbar-nav ml-auto">
                     {% if user.is_authenticated %}
                     <li class="nav-item active">
-                        <a class="nav-link" href="">Welcome {{user.first_name}}</a>
+                        <a class="nav-link" href="{% url 'index' %}">Welcome {{user.first_name}}</a>
                     </li>
                     <li class="nav-item active">
                         <a class="nav-link" href="javascript:{document.getElementById('logout').submit()}">Logout</a>
